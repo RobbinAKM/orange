@@ -4,6 +4,9 @@ import ChildCourse from './ChildCourse';
 import Home from './Home';
 import CoursesMain from './CoursesMain';
 import Breadcrumb from './Breadcrumb';
+import {Provider as CourseProvider} from '../context/courseContext';
+
+
 
 import {
   BrowserRouter as Router,
@@ -13,7 +16,8 @@ import {
 
 
 
-const App = ()=>{
+
+const Main = ()=>{
   return (
     <Router>
     <Header/>
@@ -34,5 +38,13 @@ const App = ()=>{
     </Router>
     )
 }
+
+const App=()=>{
+  return(
+  <CourseProvider>
+    <Main/>
+  </CourseProvider>
+  )
+};
 
 export default App;

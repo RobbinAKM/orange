@@ -1,3 +1,4 @@
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -6,7 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 
-import Footer from './Footer';
+
 
 import {Link} from "react-router-dom";
 
@@ -17,8 +18,9 @@ const useStyles = makeStyles({
   },
 });
 
-const Courses =()=>{
+const Courses =({name,img,des})=>{
     const classes = useStyles();
+
 
   return(
     <div>
@@ -29,27 +31,25 @@ const Courses =()=>{
               component="img"
               alt="Contemplative Reptile"
               height="140"
-              image="https://miro.medium.com/max/6000/1*L76A5gL6176UbMgn7q4Ybg.jpeg"
+              image={img}
               title="Contemplative Reptile"
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="h2">
-                Course Name
+                {name}
               </Typography>
               <Typography variant="body2" color="textSecondary" component="p">
-              orem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-              molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
+                {des}
               </Typography>
             </CardContent>
           </CardActionArea>
           <CardActions>
-            <Link style={{ textDecoration: 'none', color: 'blue' ,marginLeft:"10px" }} to='/courses/child'>
+            <Typography style={{ textDecoration: 'none', color: 'blue' ,marginLeft:"10px" }}>
               Start Learning
-            </Link>
+            </Typography>
           </CardActions>
         </Card>
       </Link>
-      <Footer/>
     </div>
   )
 };
