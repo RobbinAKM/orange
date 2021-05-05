@@ -9,6 +9,8 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Dialog from '@material-ui/core/Dialog';
 import Quiz from './Quiz';
+import {useParams} from "react-router-dom";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -44,7 +46,17 @@ function getStepContent(step) {
 }
 
 
-const ChildCourse =()=>{
+const ChildCourse =({state})=>{
+
+    let { id } = useParams();
+    const resultCourses=state.find(l=>l.course_route === id);
+
+   if(resultCourses){
+     console.log(resultCourses.lectures);
+   }
+
+
+
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
    const [open, setOpen] = React.useState(false);
@@ -72,7 +84,7 @@ const ChildCourse =()=>{
   return(
     <div>
     <Typography variant="h4" gutterBottom style={{marginLeft:"25px",marginTop:"20px"}}>
-        Unit 1: Numbers Theory
+    g
       </Typography>
     <Stepper activeStep={activeStep} orientation="vertical">
        {steps.map((label, index) => (

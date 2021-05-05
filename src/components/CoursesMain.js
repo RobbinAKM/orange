@@ -1,16 +1,10 @@
-import React,{useEffect,useContext} from 'react';
+import React from 'react';
 import Courses from './Courses'
-import {Context as CourseContext} from '../context/courseContext';
+
 import Footer from './Footer';
 import Grid from '@material-ui/core/Grid';
 
-const CoursesMain=()=>{
-  const {state,fetchCourses} = useContext(CourseContext);
-
-  useEffect(()=>{
-    fetchCourses();
-  },[]); // eslint-disable-line react-hooks/exhaustive-deps
-
+const CoursesMain=({state})=>{
   return(
     <>
     <Grid container spacing={1}>
@@ -20,6 +14,7 @@ const CoursesMain=()=>{
        name={value.course_name}
        img={value.course_img}
        des={value.course_description}
+       route={value.course_route}
        /></div>
     })}
     </Grid>

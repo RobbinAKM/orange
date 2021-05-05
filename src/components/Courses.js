@@ -18,13 +18,13 @@ const useStyles = makeStyles({
   },
 });
 
-const Courses =({name,img,des})=>{
+const Courses =({name,img,des,route})=>{
     const classes = useStyles();
-
+    const path ='/courses/'+route
 
   return(
     <div>
-  <Link style={{ textDecoration: 'none', color: 'inherit' }} to='/courses/child'>
+  <Link style={{ textDecoration: 'none', color: 'inherit' }} to={path}>
     <Card className={classes.root} style={{margin:'30px'}}>
           <CardActionArea>
             <CardMedia

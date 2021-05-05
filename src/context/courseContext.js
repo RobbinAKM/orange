@@ -15,6 +15,7 @@ const fetchCourses=dispatch=>async ()=>{
   dispatch({type:'fetch_courses',payload:response.data});
 }
 
+
 export const{Context,Provider}=createDataContext(
   CourseReducer,
   {fetchCourses},

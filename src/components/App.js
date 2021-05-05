@@ -1,10 +1,11 @@
-import React from 'react';
+import React,{useEffect,useContext} from 'react';
 import Header from './Header'
 import ChildCourse from './ChildCourse';
 import Home from './Home';
 import CoursesMain from './CoursesMain';
 import Breadcrumb from './Breadcrumb';
 import {Provider as CourseProvider} from '../context/courseContext';
+import {Context as CourseContext} from '../context/courseContext';
 
 
 
@@ -18,6 +19,12 @@ import {
 
 
 const Main = ()=>{
+  const {state,fetchCourses} = useContext(CourseContext);
+
+  useEffect(()=>{
+    fetchCourses();
+  },[]); // eslint-disable-line react-hooks/exhaustive-deps
+
   return (
     <Router>
     <Header/>
@@ -28,10 +35,10 @@ const Main = ()=>{
         <Home/>
       </Route>
       <Route exact path="/courses">
-        <CoursesMain/>
+        <CoursesMain state={state}/>
       </Route>
       <Route path="/courses/:id">
-       <ChildCourse/>
+       <ChildCourse state={state}/>
      </Route>
       </Switch>
     </div>
