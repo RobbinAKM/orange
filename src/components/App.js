@@ -16,8 +16,6 @@ import {
 } from "react-router-dom";
 
 
-
-
 const Main = ()=>{
   const {state,fetchCourses} = useContext(CourseContext);
 
@@ -38,7 +36,7 @@ const Main = ()=>{
         <CoursesMain state={state}/>
       </Route>
       <Route path="/courses/:id">
-       <ChildCourse state={state}/>
+       <ChildCourse state={state} />
      </Route>
       </Switch>
     </div>

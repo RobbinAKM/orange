@@ -1,10 +1,11 @@
 import React from 'react';
 import Courses from './Courses'
-
 import Footer from './Footer';
 import Grid from '@material-ui/core/Grid';
 
+
 const CoursesMain=({state})=>{
+
   return(
     <>
     <Grid container spacing={1}>
@@ -22,6 +23,7 @@ const CoursesMain=({state})=>{
       <Footer/>
     </>
   )
+
 };
 
 export default CoursesMain;
