@@ -5,7 +5,6 @@ import Grid from '@material-ui/core/Grid';
 
 
 const CoursesMain=({state})=>{
-
   return(
     <>
     <Grid container spacing={1}>
@@ -16,6 +15,7 @@ const CoursesMain=({state})=>{
        img={value.course_img}
        des={value.course_description}
        route={value.course_route}
+
        /></div>
     })}
     </Grid>

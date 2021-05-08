@@ -18,6 +18,7 @@ const resultCourses=state.find(l=>l.course_route === id);
         name={value.lecture_name}
         video_array={value.lecture_videos}
         lecture_name_array={value.lecture_titles}
+        quizzes={value.questions}
         />
       )
     })

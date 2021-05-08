@@ -3,6 +3,7 @@ import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import MathJax from 'react-mathjax';
 
 const useStyles = makeStyles((theme) => ({
   margin: {
@@ -20,47 +21,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const Quiz=()=> {
+const Quiz=({quizzes})=> {
    const classes = useStyles();
 
-	const questions = [
-		{
-			questionText: 'What is the capital of France?',
-			answerOptions: [
-				{ answerText: 'New York', isCorrect: false },
-				{ answerText: 'London', isCorrect: false },
-				{ answerText: 'Paris', isCorrect: true },
-				{ answerText: 'Dublin', isCorrect: false },
-			],
-		},
-		{
-			questionText: 'Who is CEO of Tesla?',
-			answerOptions: [
-				{ answerText: 'Jeff Bezos', isCorrect: false },
-				{ answerText: 'Elon Musk', isCorrect: true },
-				{ answerText: 'Bill Gates', isCorrect: false },
-				{ answerText: 'Tony Stark', isCorrect: false },
-			],
-		},
-		{
-			questionText: 'The iPhone was created by which company?',
-			answerOptions: [
-				{ answerText: 'Apple', isCorrect: true },
-				{ answerText: 'Intel', isCorrect: false },
-				{ answerText: 'Amazon', isCorrect: false },
-				{ answerText: 'Microsoft', isCorrect: false },
-			],
-		},
-		{
-			questionText: 'How many Harry Potter books are there?',
-			answerOptions: [
-				{ answerText: '1', isCorrect: false },
-				{ answerText: '4', isCorrect: false },
-				{ answerText: '6', isCorrect: false },
-				{ answerText: '7', isCorrect: true },
-			],
-		},
-	];
+	const questions =quizzes;
+
+  console.log(questions); 
 
 
 const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -92,6 +58,7 @@ const handleAnswerButtonClick = (isCorrect) => {
 	return (
    <div className={classes.root} style={{marginLeft:"20px"}}>
     <Paper elevation={3}>
+      <MathJax.Provider>
 		<div className='app' style={{margin:"20px"}}>
 			{showScore ? (
 				<Typography variant="h6" gutterBottom>You scored {score}out of {questions.length}</Typography>
@@ -99,19 +66,22 @@ const handleAnswerButtonClick = (isCorrect) => {
 				<>
 					<div className='question-section'>
 						<div className='question-count'>
-							<Typography variant="h6" gutterBottom>Question {questions.indexOf(questions[currentQuestion])+1}/{questions.length} </Typography>
+							<Typography variant="h6" gutterBottom>Question{questions.indexOf(questions[currentQuestion])+1}/{questions.length} </Typography>
 						</div>
-								<Typography variant="h6" gutterBottom>{questions[currentQuestion].questionText}</Typography>
+              <Typography variant="h6" gutterBottom><MathJax.Node formula={questions[currentQuestion].questionText}/></Typography>
 					</div>
 					<Typography variant="subtitle1" gutterBottom>
           {questions[currentQuestion].answerOptions.map((answerOption, index) => (
-  	  	    <Button key={index} onClick={() => handleAnswerButtonClick(answerOption.isCorrect)} variant="contained" size="medium" color="primary" style={{margin:"10px"}}>{answerOption.answerText}</Button>
+  	  	    <Button key={index} onClick={() => handleAnswerButtonClick(answerOption.isCorrect)} variant="contained" size="medium" color="primary" style={{margin:"10px"}}>
+            <MathJax.Node formula={answerOption.answerText}/>
+            </Button>
   	       ))}
 					</Typography>
           <h1 style={{color:'red'}}>{err}</h1>
 				</>
 			)}
 		</div>
+      </MathJax.Provider>
     </Paper>
    </div>
 	);

@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const ChildCourse =({name,video_array,lecture_name_array})=>{
+const ChildCourse =({name,video_array,lecture_name_array,quizzes})=>{
 
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
@@ -126,7 +126,7 @@ const ChildCourse =({name,video_array,lecture_name_array})=>{
             Open Quiz
        </Button>
        <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
-          <Quiz/>
+          <Quiz quizzes={quizzes}/>
        </Dialog>
     </div>
   )
