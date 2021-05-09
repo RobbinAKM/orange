@@ -26,7 +26,7 @@ const Main = ()=>{
   return (
     <Router>
     <Header/>
-    <Breadcrumb/>
+      <Breadcrumb/>
       <div>
       <Switch>
       <Route exact path="/">
