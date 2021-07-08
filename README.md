@@ -1,3 +1,11 @@
+Project overview 
+
+- this is the project dedicated for MYANMAR 
+- online free education platform for MYANMAR 
+- this project will be finished in 2021/9 
+- this project used AWS cloud front for better deliverance of content and other AWS services for database and API 
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
